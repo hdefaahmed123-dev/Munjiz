@@ -32,6 +32,8 @@ jobs:
       - name: Build APK
         run: |
           cd extracted_project
+          PROJECT_DIR=$(find . -name "pubspec.yaml" -maxdepth 2 -exec dirname {} \;)
+          cd "$PROJECT_DIR"
           flutter pub get
           flutter build apk --release
 
